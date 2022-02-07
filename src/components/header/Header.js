@@ -14,7 +14,7 @@ function Header() {
     const categoryValue = useSelector((state) => state.template.categoryValue);
     const orderValue = useSelector((state) => state.template.orderValue);
     const dateValue = useSelector((state) => state.template.dateValue);
-    const pageTemplates = useSelector((state) => state.template.pageTemplates);
+    const allTemplates = useSelector((state) => state.template.allTemplates);
 
     return (
         <header>
@@ -23,7 +23,7 @@ function Header() {
                     placeholder="Search Templates"
                     onChange={({ target }) => dispatch(search(target.value))}
                     value={searchValue}
-                    disabled={!pageTemplates.length}
+                    disabled={!allTemplates.length}
                 />
                 <label>
                     <FiSearch />
@@ -40,7 +40,12 @@ function Header() {
 
                 <div className="select-container">
                     <span>Sort By:</span>
-                    <Select label={"Category"} options={categoryOptions} onChangeHandler={sortByCategory} value={categoryValue} />
+                    <Select
+                        label={"Category"}
+                        options={categoryOptions}
+                        onChangeHandler={sortByCategory}
+                        value={categoryValue}
+                    />
                     <Select label={"Order"} options={orderOptions} onChangeHandler={sortByOrder} value={orderValue} />
                     <Select label={"Date"} options={dateOptions} onChangeHandler={sortByDate} value={dateValue} />
                 </div>
