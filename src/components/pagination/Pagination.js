@@ -12,6 +12,7 @@ function Pagination() {
     return (
         <div className="pagination">
             <button
+                type="button"
                 className="pagination_previou"
                 onClick={() => dispatch(previouPage())}
                 disabled={currentPage === 1}
@@ -25,6 +26,7 @@ function Pagination() {
                 </p>
             </div>
             <button
+                type="button"
                 className="pagination_next"
                 onClick={() => dispatch(nextPage())}
                 disabled={currentPage === totalPages || currentPage > totalPages}

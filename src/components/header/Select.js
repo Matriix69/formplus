@@ -1,5 +1,6 @@
 import { HiOutlineChevronDown } from "react-icons/hi";
 import { useSelector, useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 
 function Select({ label, options, onChangeHandler, value, testid }) {
     const dispatch = useDispatch();
@@ -30,4 +31,11 @@ function Select({ label, options, onChangeHandler, value, testid }) {
     );
 }
 
+Select.propTypes = {
+    label: PropTypes.string,
+    options: PropTypes.array,
+    onChangeHandler: PropTypes.func,
+    value: PropTypes.string,
+    testid: PropTypes.string,
+};
 export default Select;
