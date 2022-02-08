@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.scss";
 import Header from "./components/header/Header";
 import Info from "./components/info/Info";
@@ -15,7 +15,7 @@ function App() {
 
     useEffect(() => {
         dispatch(fetchTemplates());
-    }, []);
+    }, [dispatch]);
 
     return (
         <main>

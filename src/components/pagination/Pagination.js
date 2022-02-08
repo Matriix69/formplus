@@ -1,5 +1,5 @@
 import "./pagination.scss";
-import { selectAllTemplates, selectCurrentpage, selectTotalPages, nextPage, previouPage } from "../../redux/slice";
+import { selectCurrentpage, nextPage, previouPage } from "../../redux/slice";
 import { useSelector, useDispatch } from "react-redux";
 
 function Pagination() {

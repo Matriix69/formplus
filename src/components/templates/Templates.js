@@ -1,6 +1,6 @@
 import React from "react";
 import "./template.scss";
-import { selectAllTemplates, selectCurrentpage, selectTemplatesPerPage, selectPageTemplates } from "../../redux/slice";
+import { selectCurrentpage, selectTemplatesPerPage, selectPageTemplates } from "../../redux/slice";
 import { useSelector } from "react-redux";
 
 function Templates() {

@@ -35,7 +35,7 @@ describe("integration test", () => {
         expect(screen.getByTestId("Date")).toBeInTheDocument();
         expect(screen.getByTestId("info")).toBeInTheDocument();
 
-        //check if they are disbaled while fetching data to avoid user interaction
+        //check if forms are disbaled while fetching data to avoid user interaction
         expect(screen.getByTestId("search-field")).toBeDisabled();
         expect(screen.getByTestId("Category")).toBeDisabled();
         expect(screen.getByTestId("Order")).toBeDisabled();
@@ -44,7 +44,6 @@ describe("integration test", () => {
         //check if they are enabled after data is been fetched
         await new Promise((r) => setTimeout(r, 500));
 
-        // await waitForElementToBeRemoved(() => screen.getByText(/loading templates.../i));
         expect(screen.getByTestId("search-field")).toBeEnabled();
         expect(screen.getByTestId("Category")).toBeEnabled();
         expect(screen.getByTestId("Order")).toBeEnabled();
@@ -55,7 +54,7 @@ describe("integration test", () => {
         expect(screen.getByTestId("Previous")).toBeInTheDocument();
         expect(screen.getByTestId("page-count")).toBeInTheDocument();
 
-        //chech if the page-count is correct
+        //check if the page-count is correct
         expect(screen.getByText(/of 2/i)).toBeInTheDocument();
 
         //checking the length of template rendered
@@ -66,7 +65,7 @@ describe("integration test", () => {
             target: { value: "consequat." },
         });
 
-        //test the number of templated returned from the search
+        //test the number of templates returned from the search (4)
         expect(screen.getAllByTestId("temp").length).toBe(4);
         expect(screen.getByText(/4 templates/i)).toBeInTheDocument();
 
@@ -84,7 +83,7 @@ describe("integration test", () => {
         //user interaction with the pagination button next
         fireEvent.click(screen.getByTestId("Next"));
 
-        //expects total template rendered to be 1, since total length of template is 16 and going to the next page will have only template left
+        //expects total number of templates rendered to be 1, since total length of template is 16 and going to the next page will only have one template left
         expect(screen.getAllByTestId("temp").length).toBe(1);
 
         //test if button is disabled and page count doesnt increase
@@ -114,7 +113,7 @@ describe("integration test", () => {
             target: { value: "Descending" },
         });
 
-        //interacting with sortby date should reset sortby category
+        //interacting with sortby date should reset sortby order field
         expect(screen.getByTestId("Order").value).toBe("Default");
 
         //user interacting with sortby category should reset all other filter
