@@ -20,7 +20,7 @@ function Pagination() {
                 Previous
             </button>
             <div className="pagination_position">
-                <p>
+                <p data-testid="page-count">
                     <span>{currentPage}</span> of {totalPages}
                 </p>
             </div>

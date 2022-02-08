@@ -26,7 +26,7 @@ function Templates() {
                             <p className="template_card_details_description">{description}</p>
                         </div>
                         <div className="template_card_action">
-                            <a href="#">Use Template</a>
+                            <a href={`#${link}`}>Use Template</a>
                         </div>
                     </div>
                 ))}

@@ -4,7 +4,7 @@ import "./info.scss";
 
 function Info({ text }) {
     return (
-        <div className="info-container">
+        <div className="info-container" data-testid="info">
             <BsInfoCircle />
             <p>{text}</p>
         </div>
