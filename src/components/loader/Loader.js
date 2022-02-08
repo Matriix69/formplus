@@ -1,8 +1,8 @@
 import "./loader.scss";
 function Loader() {
     return (
-        <div class="overlay-loader">
-            <div class="spinner"></div>
+        <div className="overlay-loader">
+            <div className="spinner"></div>
             <p>loading templates...</p>
         </div>
     );

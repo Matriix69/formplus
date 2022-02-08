@@ -1,7 +1,7 @@
 import { HiOutlineChevronDown } from "react-icons/hi";
 import { useSelector, useDispatch } from "react-redux";
 
-function Select({ label, options, onChangeHandler, value }) {
+function Select({ label, options, onChangeHandler, value, testid }) {
     const dispatch = useDispatch();
     const pageTemplates = useSelector((state) => state.template.pageTemplates);
 
@@ -13,7 +13,7 @@ function Select({ label, options, onChangeHandler, value }) {
 
             <select
                 className="select-item"
-                aria-label="select"
+                data-testid={testid}
                 onChange={({ target }) => dispatch(onChangeHandler(target.value))}
                 value={value}
                 disabled={!pageTemplates.length}

@@ -24,6 +24,7 @@ function Header() {
                     onChange={({ target }) => dispatch(search(target.value))}
                     value={searchValue}
                     disabled={!allTemplates.length}
+                    data-testid="search-field"
                 />
                 <label>
                     <FiSearch />
@@ -45,9 +46,16 @@ function Header() {
                         options={categoryOptions}
                         onChangeHandler={sortByCategory}
                         value={categoryValue}
+                        testid={"Category"}
                     />
-                    <Select label={"Order"} options={orderOptions} onChangeHandler={sortByOrder} value={orderValue} />
-                    <Select label={"Date"} options={dateOptions} onChangeHandler={sortByDate} value={dateValue} />
+                    <Select
+                        label={"Order"}
+                        options={orderOptions}
+                        onChangeHandler={sortByOrder}
+                        value={orderValue}
+                        testid={"Order"}
+                    />
+                    <Select label={"Date"} options={dateOptions} onChangeHandler={sortByDate} value={dateValue} testid={"Date"} />
                 </div>
             </div>
         </header>

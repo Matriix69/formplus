@@ -52,3 +52,119 @@ export const dateDescending = (a, b) => {
 
     return 0;
 };
+
+export const fakeTemplates = [
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.118701",
+        description: "irure pariatur. ullamco reprehenderit proident,",
+        link: "https://formpl.us/templates",
+        name: "occaecat nostrud nulla",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.298432",
+        description: "velit incididunt eiusmod fugiat occaecat",
+        link: "https://formpl.us/templates",
+        name: "consequat. consectetur laboris",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.165987",
+        description: "elit, deserunt commodo fugiat reprehenderit",
+        link: "https://formpl.us/templates",
+        name: "tempor minim reprehenderit",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.318681",
+        description: "velit dolor Excepteur officia adipiscing",
+        link: "https://formpl.us/templates",
+        name: "magna reprehenderit voluptate",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.118701",
+        description: "irure pariatur. ullamco reprehenderit proident,",
+        link: "https://formpl.us/templates",
+        name: "occaecat nostrud nulla",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.298432",
+        description: "velit incididunt eiusmod fugiat occaecat",
+        link: "https://formpl.us/templates",
+        name: "consequat. consectetur laboris",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.165987",
+        description: "elit, deserunt commodo fugiat reprehenderit",
+        link: "https://formpl.us/templates",
+        name: "tempor minim reprehenderit",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.318681",
+        description: "velit dolor Excepteur officia adipiscing",
+        link: "https://formpl.us/templates",
+        name: "magna reprehenderit voluptate",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.118701",
+        description: "irure pariatur. ullamco reprehenderit proident,",
+        link: "https://formpl.us/templates",
+        name: "occaecat nostrud nulla",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.298432",
+        description: "velit incididunt eiusmod fugiat occaecat",
+        link: "https://formpl.us/templates",
+        name: "consequat. consectetur laboris",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.165987",
+        description: "elit, deserunt commodo fugiat reprehenderit",
+        link: "https://formpl.us/templates",
+        name: "tempor minim reprehenderit",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.318681",
+        description: "velit dolor Excepteur officia adipiscing",
+        link: "https://formpl.us/templates",
+        name: "magna reprehenderit voluptate",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.118701",
+        description: "irure pariatur. ullamco reprehenderit proident,",
+        link: "https://formpl.us/templates",
+        name: "occaecat nostrud nulla",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.298432",
+        description: "velit incididunt eiusmod fugiat occaecat",
+        link: "https://formpl.us/templates",
+        name: "consequat. consectetur laboris",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.165987",
+        description: "elit, deserunt commodo fugiat reprehenderit",
+        link: "https://formpl.us/templates",
+        name: "tempor minim reprehenderit",
+    },
+    {
+        category: ["Health", "E-commerce", "Education"],
+        created: "2022-02-07T20:53:17.318681",
+        description: "velit dolor Excepteur officia adipiscing",
+        link: "https://formpl.us/templates",
+        name: "magna reprehenderit voluptate",
+    },
+];
+console.log(fakeTemplates.length);

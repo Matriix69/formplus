@@ -11,7 +11,12 @@ function Pagination() {
 
     return (
         <div className="pagination">
-            <button className="pagination_previou" onClick={() => dispatch(previouPage())} disabled={currentPage === 1}>
+            <button
+                className="pagination_previou"
+                onClick={() => dispatch(previouPage())}
+                disabled={currentPage === 1}
+                data-testid="Previous"
+            >
                 Previous
             </button>
             <div className="pagination_position">
@@ -19,7 +24,12 @@ function Pagination() {
                     <span>{currentPage}</span> of {totalPages}
                 </p>
             </div>
-            <button className="pagination_next" onClick={() => dispatch(nextPage())} disabled={currentPage === totalPages}>
+            <button
+                className="pagination_next"
+                onClick={() => dispatch(nextPage())}
+                disabled={currentPage === totalPages || currentPage > totalPages}
+                data-testid="Next"
+            >
                 Next
             </button>
         </div>

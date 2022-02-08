@@ -20,7 +20,7 @@ function Templates() {
             </div>
             <div className="template">
                 {data?.slice(indexOfFirstTemplate, indexOfLastTemplate)?.map(({ name, description, link }, index) => (
-                    <div className="template_card" key={index}>
+                    <div className="template_card" key={index} data-testid="temp">
                         <div className="template_card_details">
                             <h1 className="template_card_details_title">{name}</h1>
                             <p className="template_card_details_description">{description}</p>
