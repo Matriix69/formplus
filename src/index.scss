@@ -4,6 +4,7 @@
     text-decoration: none;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
+    scroll-behavior: smooth;
 }
 *,
 :after,
@@ -19,8 +20,8 @@ body {
     --gray1: #989898;
 
     margin: 0;
-    font-family: "Circular Std", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-        "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: "Circular Std", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+        "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

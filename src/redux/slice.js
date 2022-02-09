@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { orderAscending, orderDescending, dateAscending, dateDescending } from "../constants/constants";
+import { orderAscending, orderDescending, dateAscending, dateDescending, scrollToTop } from "../constants/constants";
 
 export const fetchTemplates = createAsyncThunk("templates/getTemplate", async () => {
     const res = await fetch(
@@ -26,12 +26,15 @@ const templateSlice = createSlice({
     reducers: {
         nextPage: (state) => {
             state.currentPage = state.currentPage + 1;
+            scrollToTop()
         },
         previouPage: (state) => {
             state.currentPage = state.currentPage - 1;
+            scrollToTop()
         },
         search: (state, action) => {
             state.searchValue = action.payload;
+            state.currentPage = 1;
             const filteredSearch = state.allTemplates?.filter((template) =>
                 template["name"].toLowerCase().includes(state.searchValue)
             );

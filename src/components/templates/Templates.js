@@ -30,6 +30,7 @@ function Templates() {
                         </div>
                     </div>
                 ))}
+                {!data.length && <p style={{gridColumn: "1/-1", textAlign:"center", fontWeight:"bold"}}>No result</p>}
             </div>
         </div>
     );

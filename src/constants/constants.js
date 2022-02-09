@@ -53,6 +53,10 @@ export const dateDescending = (a, b) => {
     return 0;
 };
 
+export const scrollToTop = () => {
+    window.scrollTo(0, 0);
+}
+
 export const fakeTemplates = [
     {
         category: ["Health", "E-commerce", "Education"],
