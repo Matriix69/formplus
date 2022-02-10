@@ -55,7 +55,7 @@ export const dateDescending = (a, b) => {
 
 export const scrollToTop = () => {
     window.scrollTo(0, 0);
-}
+};
 
 export const fakeTemplates = [
     {
@@ -171,4 +171,3 @@ export const fakeTemplates = [
         name: "magna reprehenderit voluptate",
     },
 ];
-console.log(fakeTemplates.length);

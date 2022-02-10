@@ -6,7 +6,6 @@ export const fetchTemplates = createAsyncThunk("templates/getTemplate", async ()
         "https://front-end-task-dot-result-analytics-dot-fpls-dev.uc.r.appspot.com/api/v1/public/task_templates"
     );
     const data = await res.json();
-    console.log(data);
     return data;
 });
 
@@ -15,7 +14,6 @@ const templateSlice = createSlice({
     initialState: {
         allTemplates: [],
         pageTemplates: [],
-        categoryTemplates: [],
         status: null,
         currentPage: 1,
         templatesPerPage: 15,
@@ -33,23 +31,32 @@ const templateSlice = createSlice({
             state.currentPage = state.currentPage - 1;
             scrollToTop();
         },
-        search: (state, action) => {
+        searchChange: (state, action) => {
             state.searchValue = action.payload;
+        },
+        search: (state, action) => {
+            const searchVal = action.payload;
             state.currentPage = 1;
 
             switch (state.categoryValue) {
                 case "All":
                     const filteredSearch = state.allTemplates?.filter((template) =>
-                        template["name"].toLowerCase().includes(state.searchValue.toLowerCase())
+                        template["name"].toLowerCase().includes(searchVal.toLowerCase())
                     );
                     state.pageTemplates = filteredSearch;
                     break;
                 case "Health":
                 case "E-commerce":
                 case "Education":
-                    const filteredSearch2 = state.categoryTemplates?.filter((template) =>
-                        template["name"].toLowerCase().includes(state.searchValue.toLowerCase())
-                    );
+                    const filteredSearch2 = state.allTemplates?.filter((template) => {
+                        if (
+                            template["name"].toLowerCase().includes(searchVal.toLowerCase()) &&
+                            template.category.includes(state.categoryValue)
+                        ) {
+                            return true;
+                        }
+                        return false;
+                    });
                     state.pageTemplates = filteredSearch2;
             }
         },
@@ -60,13 +67,11 @@ const templateSlice = createSlice({
                     ? state.allTemplates
                     : state.allTemplates?.filter((template) => template.category.includes(action.payload));
             state.pageTemplates = filteredCategory;
+
+            //reset necessary filters
             if (state.searchValue !== "") state.searchValue = "";
             if (state.orderValue !== "Default") state.orderValue = "Default";
             if (state.dateValue !== "Default") state.dateValue = "Default";
-
-            // if category is value is not all, set the filterd category to state to imporve the perfomace of search for individual categories
-            // the search function could be debounced, reducing the memory used, but i went with this approch
-            state.categoryTemplates = action.payload !== "All" ? filteredCategory : [];
         },
         sortByOrder: (state, action) => {
             state.orderValue = action.payload;
@@ -140,7 +145,7 @@ const templateSlice = createSlice({
     },
 });
 
-export const { nextPage, previouPage, decremented, search, sortByCategory, sortByOrder, sortByDate } =
+export const { nextPage, previouPage, decremented, search, sortByCategory, sortByOrder, sortByDate, searchChange } =
     templateSlice.actions;
 
 export const selectAllTemplates = (state) => state.template.allTemplates;

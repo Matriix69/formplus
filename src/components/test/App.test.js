@@ -23,6 +23,10 @@ afterEach(() => server.resetHandlers());
 
 afterAll(() => server.close());
 
+//Remove Not implemented: window.scrollTo Error
+const noop = () => {};
+Object.defineProperty(window, "scrollTo", { value: noop, writable: true });
+
 describe("integration test", () => {
     test("all components and user interact in one integration test", async () => {
         // render the app component
@@ -65,6 +69,9 @@ describe("integration test", () => {
             target: { value: "consequat." },
         });
 
+        //debounce search
+        await new Promise((r) => setTimeout(r, 600));
+
         //test the number of templates returned from the search (4)
         expect(screen.getAllByTestId("temp").length).toBe(4);
         expect(screen.getByText(/4 templates/i)).toBeInTheDocument();
@@ -102,6 +109,9 @@ describe("integration test", () => {
         fireEvent.change(screen.getByTestId("search-field"), {
             target: { value: "laboris." },
         });
+
+        //debounce search
+        await new Promise((r) => setTimeout(r, 600));
 
         //user interaction with sortby oder
         fireEvent.change(screen.getByTestId("Order"), {

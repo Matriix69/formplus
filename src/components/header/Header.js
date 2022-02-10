@@ -4,8 +4,10 @@ import { FiSearch } from "react-icons/fi";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import Select from "./Select";
 import { categoryOptions, dateOptions, orderOptions } from "../../constants/constants";
-import { search, sortByCategory, sortByOrder, sortByDate } from "../../redux/slice";
+import { search, sortByCategory, sortByOrder, sortByDate, searchChange } from "../../redux/slice";
 import { useSelector, useDispatch } from "react-redux";
+import debounce from "lodash.debounce";
+import { useCallback } from "react";
 
 function Header() {
     const [toggle, setToggle] = useState(false);
@@ -16,12 +18,22 @@ function Header() {
     const dateValue = useSelector((state) => state.template.dateValue);
     const allTemplates = useSelector((state) => state.template.allTemplates);
 
+    const searchForTemplate = useCallback(
+        debounce((searchfield) => {
+            dispatch(search(searchfield));
+        }, 500),
+        []
+    );
+
     return (
         <header>
             <div className="search-container">
                 <input
                     placeholder="Search Templates"
-                    onChange={({ target }) => dispatch(search(target.value))}
+                    onChange={({ target }) => {
+                        dispatch(searchChange(target.value));
+                        searchForTemplate(target.value);
+                    }}
                     value={searchValue}
                     disabled={!allTemplates.length}
                     data-testid="search-field"
@@ -55,7 +67,13 @@ function Header() {
                         value={orderValue}
                         testid={"Order"}
                     />
-                    <Select label={"Date"} options={dateOptions} onChangeHandler={sortByDate} value={dateValue} testid={"Date"} />
+                    <Select
+                        label={"Date"}
+                        options={dateOptions}
+                        onChangeHandler={sortByDate}
+                        value={dateValue}
+                        testid={"Date"}
+                    />
                 </div>
             </div>
         </header>
