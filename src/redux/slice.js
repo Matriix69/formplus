@@ -15,6 +15,7 @@ const templateSlice = createSlice({
     initialState: {
         allTemplates: [],
         pageTemplates: [],
+        categoryTemplates: [],
         status: null,
         currentPage: 1,
         templatesPerPage: 15,
@@ -46,31 +47,11 @@ const templateSlice = createSlice({
                 case "Health":
                 case "E-commerce":
                 case "Education":
-                    const filterCategory = state.allTemplates?.filter((template) => {
-                        if (
-                            template.category.includes(state.categoryValue) &&
-                            template["name"].toLowerCase().includes(state.searchValue.toLowerCase())
-                        ) {
-                            return true;
-                        }
-                        return false;
-                        // template.category
-                        //     .includes(state.categoryValue)
-                    });
-                    // const filteredSearch2 = filterCategory?.filter((template) =>
-                    //     template["name"].toLowerCase().includes(state.searchValue.toLowerCase())
-                    // );
-                    state.pageTemplates = filterCategory;
+                    const filteredSearch2 = state.categoryTemplates?.filter((template) =>
+                        template["name"].toLowerCase().includes(state.searchValue.toLowerCase())
+                    );
+                    state.pageTemplates = filteredSearch2;
             }
-
-            // const filteredSearch = state.categoryValue !== "All" ? state.allTemplates?.filter((template) => {
-            //     // console.log()
-            // return template.category.includes(state.categoryValue)
-            // //  console.log(category)
-            // //  return category["name"].toLowerCase().includes(state.searchValue.toLowerCase())
-            // }) : null
-            // // state.pageTemplates = filteredSearch;
-            // console.log(filteredSearch)
         },
         sortByCategory: (state, action) => {
             state.categoryValue = action.payload;
@@ -82,6 +63,10 @@ const templateSlice = createSlice({
             if (state.searchValue !== "") state.searchValue = "";
             if (state.orderValue !== "Default") state.orderValue = "Default";
             if (state.dateValue !== "Default") state.dateValue = "Default";
+
+            // if category is value is not all, set the filterd category to state to imporve the perfomace of search for individual categories
+            // the search function could be debounced, reducing the memory used, but i went with this approch
+            state.categoryTemplates = action.payload !== "All" ? filteredCategory : [];
         },
         sortByOrder: (state, action) => {
             state.orderValue = action.payload;
