@@ -26,19 +26,51 @@ const templateSlice = createSlice({
     reducers: {
         nextPage: (state) => {
             state.currentPage = state.currentPage + 1;
-            scrollToTop()
+            scrollToTop();
         },
         previouPage: (state) => {
             state.currentPage = state.currentPage - 1;
-            scrollToTop()
+            scrollToTop();
         },
         search: (state, action) => {
             state.searchValue = action.payload;
             state.currentPage = 1;
-            const filteredSearch = state.allTemplates?.filter((template) =>
-                template["name"].toLowerCase().includes(state.searchValue)
-            );
-            state.pageTemplates = filteredSearch;
+
+            switch (state.categoryValue) {
+                case "All":
+                    const filteredSearch = state.allTemplates?.filter((template) =>
+                        template["name"].toLowerCase().includes(state.searchValue.toLowerCase())
+                    );
+                    state.pageTemplates = filteredSearch;
+                    break;
+                case "Health":
+                case "E-commerce":
+                case "Education":
+                    const filterCategory = state.allTemplates?.filter((template) => {
+                        if (
+                            template.category.includes(state.categoryValue) &&
+                            template["name"].toLowerCase().includes(state.searchValue.toLowerCase())
+                        ) {
+                            return true;
+                        }
+                        return false;
+                        // template.category
+                        //     .includes(state.categoryValue)
+                    });
+                    // const filteredSearch2 = filterCategory?.filter((template) =>
+                    //     template["name"].toLowerCase().includes(state.searchValue.toLowerCase())
+                    // );
+                    state.pageTemplates = filterCategory;
+            }
+
+            // const filteredSearch = state.categoryValue !== "All" ? state.allTemplates?.filter((template) => {
+            //     // console.log()
+            // return template.category.includes(state.categoryValue)
+            // //  console.log(category)
+            // //  return category["name"].toLowerCase().includes(state.searchValue.toLowerCase())
+            // }) : null
+            // // state.pageTemplates = filteredSearch;
+            // console.log(filteredSearch)
         },
         sortByCategory: (state, action) => {
             state.categoryValue = action.payload;
@@ -123,7 +155,8 @@ const templateSlice = createSlice({
     },
 });
 
-export const { nextPage, previouPage, decremented, search, sortByCategory, sortByOrder, sortByDate } = templateSlice.actions;
+export const { nextPage, previouPage, decremented, search, sortByCategory, sortByOrder, sortByDate } =
+    templateSlice.actions;
 
 export const selectAllTemplates = (state) => state.template.allTemplates;
 export const selectPageTemplates = (state) => state.template.pageTemplates;
